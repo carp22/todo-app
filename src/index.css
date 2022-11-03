@@ -1,14 +1,38 @@
 *{
   box-sizing: border-box;
-  background-color: cadetblue;
   font-family: 'Josefin Sans', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.todo-header{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.lightbg-image{
+  background-image: url("../public/images/bg-desktop-light.jpg");
+  background-repeat: no-repeat;
+}
 
+.darkbg-image{
+  background-image: url("../../public/images/bg-desktop-dark.jpg");
+  background-repeat: no-repeat;
+}
+
+.darkmode{
+  color: #FFFFFF;
+  background-color: #191924;
+  height: 100vh;
+}
+.todo-body{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+.todo_label{
+  letter-spacing: 0.5rem;
+  color: #FFFFFF;
 }
 .mode-icon:hover{
   cursor: pointer;
@@ -16,13 +40,16 @@
 .newtodo-input{
   font-weight: 400;
   font-size: 1.5rem;
-  background-color: white;
-  height: 3.5em;
+  
+  height: 1.8em;
+  width: 20em;
+
+  text-indent: 20px;
+
   border: hidden;
   border-radius: 5px;
 
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 20px;
 }
 .newtodo-input:focus{
   outline: none;
