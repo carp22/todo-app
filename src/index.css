@@ -8,16 +8,25 @@
 .lightbg-image{
   background-image: url("../public/images/bg-desktop-light.jpg");
   background-repeat: no-repeat;
+  transition: all 1s ease;
 }
 
 .darkbg-image{
   background-image: url("../../public/images/bg-desktop-dark.jpg");
   background-repeat: no-repeat;
+  transition: all 1s ease;
 }
 
 .darkmode{
   color: #FFFFFF;
-  background-color: #191924;
+  background-color:#191924;
+  transition: all 1s ease;
+  height: max-content;
+}
+.lightmode{
+  color: #000;
+  background-color: #fbfbfa;
+  transition: all 1s ease;
   height: 100vh;
 }
 .todo-body{
@@ -33,18 +42,24 @@
 .todo_label{
   letter-spacing: 0.5rem;
   color: #FFFFFF;
+  transition: all 1s ease;
 }
 .mode-icon:hover{
   cursor: pointer;
 }
+.newtodo-container{
+  position: relative;
+}
 .newtodo-input{
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+
+  background-color: #fffefe;
   
   height: 1.8em;
   width: 20em;
 
-  text-indent: 20px;
+  text-indent: 30px;
 
   border: hidden;
   border-radius: 5px;
@@ -53,4 +68,79 @@
 }
 .newtodo-input:focus{
   outline: none;
+}
+.radio{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.todo-container{
+  display: flex;
+  flex-direction: column;
+
+  height: 5em;
+  width: 20em;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  justify-content: center;
+  align-items: center;
+
+}
+.todo-elmenent{
+
+  height: 2.8em;
+  width: 20em;
+  border-top: 0.1px solid #bbbbc4;
+  border-left: 0.1px solid #bbbbc4;
+  border-right: 0.1px solid #bbbbc4;
+}
+.elements-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  align-items: center;
+}
+.todo-settings{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  color: #44465f;
+  font-size: 9px;
+}
+.todo-status{
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.todo-settings{
+  border-top: 0.1px groove #bbbbc4;
+  border-bottom-left-radius: 5px ;
+}
+.setting-drk:hover{
+  cursor: pointer;
+  color: #f9f8f9;
+}
+.setting-drk:active{
+  cursor: pointer;
+  color: #3463ca;
+}
+.setting-lght:hover{
+  cursor: pointer;
+  color: #696b7f;
+}
+.setting-lght:active{
+  cursor: pointer;
+  color: #6390e5;
+}
+.item-darkmode{
+  background-color: #24263c;
+  color: #9798b0
+}
+.item-lightmode{
+  background-color: #fffefe;
+  color: #8a8d98
 }

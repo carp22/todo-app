@@ -5,7 +5,7 @@ import moon from "../../public/images/icon-moon.svg"
 import lightBg from "../../public/images/bg-desktop-light.jpg"
 import darkBg from "../../public/images/bg-desktop-dark.jpg"
 
-function TodoElements({darkMode, toggleMode}) {
+function TodoElements({darkMode, toggleMode, createNewTodo}) {
   return (
     <div className= {`todo-body ${darkMode ? "darkbg-image" : "lightbg-image"}`}>
         <div className="todo-header">
@@ -16,10 +16,11 @@ function TodoElements({darkMode, toggleMode}) {
                 className='mode-icon'
                 onClick={toggleMode}/>
         </div>
-        <div className="todo-container">
-          <input type="text" 
-                className={`newtodo-input ${darkMode && "darkmode"}`} 
-                placeholder='Type'/>
+        <div className="newtodo-container">
+          <input type="radio" className='radio' onClick={createNewTodo}/>
+            <input type="text" 
+                  className={`newtodo-input ${darkMode && "darkmode"}`} 
+                  placeholder='Create a new todo...'/>
         </div>
 
 
