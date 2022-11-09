@@ -7,7 +7,7 @@ import darkBg from "../../public/images/bg-desktop-dark.jpg"
 
 function TodoElements({darkMode, toggleMode, createNewTodo}) {
   return (
-    <div className= {`todo-body ${darkMode ? "darkbg-image" : "lightbg-image"}`}>
+    <div className= "todo-body darkMode">
         <div className="todo-header">
             <h2 className='todo_label'>TODO</h2>
         </div>

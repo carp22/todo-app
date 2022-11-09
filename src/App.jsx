@@ -1,12 +1,26 @@
 import TodoElements from "./components/TodoElements"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import {nanoid} from "nanoid"
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState("light")
+
 
   const [todoList, setTodoList] = useState([])
+
+  const toggleMode = function(){
+    if(darkMode === "light"){
+      setDarkMode("dark")
+    } else {
+      setDarkMode("light")
+    }
+  }
+
+  useEffect(() => {
+    document.body.className = darkMode
+  }, [darkMode])
   
+
   const createNewTodo = function(){
     const newTodo = {
       id: nanoid(),
@@ -17,15 +31,11 @@ function App() {
     console.log(newTodo)
   }
 
-  const toggleMode = function(){
-    setDarkMode(oldState => !oldState)
-  }
 
   const todoItems = todoList.map(item => {
     return( 
-      <div className= {`todo-elmenent ${darkMode ? "item-darkmode" : "item-lightmode"}`} key={item.id} > 
-        <input type="radio" className="todo-radio" id= {`todo-${item.id}`}/> 
-        <label htmlFor={`todo-${item.id}`}>{item.description}</label>
+      <div className= {`todo-elmenent ${darkMode === "light" ? "item-lgth" : "item-drk"}`} key={item.id} > 
+        <input type="radio" className="todo-radio" id= {`todo-${item.id}`}/> <h3 className="todo-label">{item.description}</h3>
       </div>
   )})
 
@@ -39,9 +49,7 @@ function App() {
         
         <div className="todo-container">
           {todoItems}
-        </div>
-
-        <div className="todo-settings">
+        <div className={`todo-settings ${darkMode === "light" ? "item-lgth" : "item-drk"}`}>
 
             <h4 className={`${ darkMode ? "setting-drk" : "setting-lght"}`}>Items left</h4>
             
@@ -52,6 +60,8 @@ function App() {
             </div>
             <h4 className={`${ darkMode ? "setting-drk" : "setting-lght"}`}>Clear completed</h4>
           </div>
+        </div>
+
     </div>
   )
 }
