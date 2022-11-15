@@ -34,13 +34,13 @@ function App() {
 
   const todoItems = todoList.map(item => {
     return( 
-      <div className= {`todo-elmenent ${darkMode === "light" ? "item-lgth" : "item-drk"}`} key={item.id} > 
+      <div className= {`todo-element ${darkMode === "light" ? "item-lgth" : "item-drk"}`} key={item.id} > 
         <input type="radio" className="todo-radio" id= {`todo-${item.id}`}/> <h3 className="todo-label">{item.description}</h3>
       </div>
   )})
 
   return (
-    <div className={`App ${darkMode ? "darkmode" : "lightmode"}`}>
+    <div>
 
       <TodoElements 
         darkMode={darkMode} 
@@ -51,14 +51,14 @@ function App() {
           {todoItems}
         <div className={`todo-settings ${darkMode === "light" ? "item-lgth" : "item-drk"}`}>
 
-            <h4 className={`${ darkMode ? "setting-drk" : "setting-lght"}`}>Items left</h4>
+            <h4 className={`${ darkMode === "light" ? "setting-lght" : "setting-drk"}`}>Items left</h4>
             
             <div className="todo-status">
-              <h4 className={`${ darkMode ? "setting-drk" : "setting-lght"}`}>All</h4>
-              <h4 className={`${ darkMode ? "setting-drk" : "setting-lght"}`}>Active</h4>
-              <h4 className={`${ darkMode ? "setting-drk" : "setting-lght"}`}>Completed</h4>
+              <h4 className={`${ darkMode === "light" ? "setting-lght" : "setting-drk"}`}>All</h4>
+              <h4 className={`${ darkMode === "light" ? "setting-lght" : "setting-drk"}`}>Active</h4>
+              <h4 className={`${ darkMode === "light" ? "setting-lght" : "setting-drk"}`}>Completed</h4>
             </div>
-            <h4 className={`${ darkMode ? "setting-drk" : "setting-lght"}`}>Clear completed</h4>
+            <h4 className={`${ darkMode === "light" ? "setting-lght" : "setting-drk"}`}>Clear completed</h4>
           </div>
         </div>
 

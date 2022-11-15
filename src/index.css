@@ -9,24 +9,24 @@
   background-color: #191924;
 
   background-image: url("../public/images/bg-desktop-dark.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   transition: all 1s ease;
 
-  color: #f0f3df;
+  color: #65667d;
 
 }
 .light{
-  background-color: #FFFFFF;
+  background-color: #fafafa;
 
   background-image: url("../public/images/bg-desktop-light.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   transition: all 1s ease;
 
-  color: #3a3a3b; 
+  color: #6f6f79; 
 }
 
 .item-lgth{
-  background-color: #FFFFFF;
+  background-color: #fefffe;
   transition: all 1s ease;
 }
 .item-drk{
@@ -35,16 +35,15 @@
 }
 
 .todo-body{
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   
   padding-top: 50px;
   padding-bottom: 50px;
 
 }
-.todo_label{
+.todo-title{
   letter-spacing: 0.5rem;
   color: #FFFFFF;
   transition: all 1s ease;
@@ -54,15 +53,21 @@
 }
 .newtodo-container{
   position: relative;
+  width: 28.5em;
+
+  margin-bottom: 10px;
+  
+  margin-left: auto;
+  margin-right: auto;
 }
 .newtodo-input{
   font-weight: 400;
   font-size: 1.2rem;
-
-  background-color: #fffefe;
   
-  height: 1.8em;
-  width: 30em;
+  height: 50px;
+  width: 23.8em;
+  margin-left: auto;
+  margin-right: auto;
 
   text-indent: 30px;
 
@@ -76,17 +81,22 @@
 }
 .radio{
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 10px;
 }
 .todo-container{
   display: flex;
   flex-direction: column;
-
+  width: 28.5em ;
   justify-content: center;
   align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  box-shadow: 0.1px .1px 50px 0.1px #504f4f;
 }
-.todo-elmenent{
+.todo-element{
   display: flex;
   justify-content: left;
   align-items: center;
@@ -120,7 +130,7 @@
   width: 50em;
 
   gap: 70px;
-  color: #44465f;
+  color: #6f6f79;
 
   font-size: 9px;
 }
@@ -131,16 +141,16 @@
   align-items: center;
 }
 .todo-settings{
-  border-top: 0.1px solid rgba(187, 187, 196, .1);
+  border-top: 0.1px solid rgba(187, 187, 196, 0.5);
   border-bottom-left-radius: 5px ;
 
-  border-bottom: 0.1px solid rgba(187, 187, 196, .1);
+  border-bottom: 0.1px solid rgba(187, 187, 196, 0.5);
   border-bottom-right-radius: 5px ;
 }
 
-/* .setting-drk:hover{
+.setting-drk:hover{
   cursor: pointer;
-  color: #f9f8f9;
+  color: #f7d7f7;
 }
 .setting-drk:active{
   cursor: pointer;
@@ -154,16 +164,3 @@
   cursor: pointer;
   color: #6390e5;
 }
-.item-darkmode{
-  background-color: #24263c;
-  background-color: #191924;
-  color: #f0f3df;
-  transition: all 1s ease;
-
-}
-.item-lightmode{
-  background-color: #ffffff;
-  background-color: #fbfbfa;
-  color: #3a3a3b;
-  transition: all 1s ease;
-} */
