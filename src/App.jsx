@@ -7,6 +7,7 @@ function App() {
 
 
   const [todoList, setTodoList] = useState([])
+  const [newEntry, setNewEntry] = useState([])
 
   const toggleMode = function(){
     if(darkMode === "light"){
@@ -20,16 +21,19 @@ function App() {
     document.body.className = darkMode
   }, [darkMode])
   
-
+  const newTodoItem = function(event){
+    const {value} = event.target
+    setNewEntry(value)
+  }
   const createNewTodo = function(){
     const newTodo = {
       id: nanoid(),
-      description: "Hola",
+      description: newEntry,
       isSelected: false
     }
     setTodoList(oldState => [newTodo, ...oldState])
-    console.log(newTodo)
-  }
+    
+  } 
 
 
   const todoItems = todoList.map(item => {
@@ -45,7 +49,10 @@ function App() {
       <TodoElements 
         darkMode={darkMode} 
         toggleMode={toggleMode}
-        createNewTodo={createNewTodo}/>
+        createNewTodo={createNewTodo}
+        newTodoItem= {newTodoItem}
+        newEntry = {newEntry}
+        />
         
         <div className="todo-container">
           {todoItems}
