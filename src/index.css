@@ -1,11 +1,12 @@
-*{
+* {
   box-sizing: border-box;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   margin: 0;
   padding: 0;
 }
-.empty{}
-.dark{
+.empty {
+}
+.dark {
   background-color: #191924;
 
   background-image: url("../public/images/bg-desktop-dark.jpg");
@@ -13,61 +14,59 @@
   transition: all 1s ease;
 
   color: #65667d;
-
 }
-.light{
+.light {
   background-color: #fafafa;
 
   background-image: url("../public/images/bg-desktop-light.jpg");
-  background-repeat: repeat-x;
+  background-repeat: no-repeat;
+  background-size: cover;
   transition: all 1s ease;
-
-  color: #6f6f79; 
+  color: #6f6f79;
 }
 
-.item-lgth{
+.item-lgth {
   background-color: #fefffe;
   transition: all 1s ease;
 
-  color: #6f6f79; 
+  color: #6f6f79;
 }
-.item-drk{
+.item-drk {
   background-color: #191924;
   transition: all 1s ease;
 
   color: #65667d;
 }
 
-.todo-body{
+.todo-body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  
+
   padding-top: 50px;
   padding-bottom: 50px;
-
 }
-.todo-title{
+.todo-title {
   letter-spacing: 0.5rem;
-  color: #FFFFFF;
+  color: #ffffff;
   transition: all 1s ease;
 }
-.mode-icon:hover{
+.mode-icon:hover {
   cursor: pointer;
 }
-.newtodo-container{
+.newtodo-container {
   position: relative;
   width: 28.5em;
 
   margin-bottom: 10px;
-  
+
   margin-left: auto;
   margin-right: auto;
 }
-.newtodo-input{
+.newtodo-input {
   font-weight: 400;
   font-size: 1.2rem;
-  
+
   height: 50px;
   width: 23.8em;
   margin-left: auto;
@@ -80,59 +79,57 @@
 
   margin-top: 20px;
 }
-.newtodo-input:focus{
+.newtodo-input:focus {
   outline: none;
 }
-.radio{
+.radio {
   position: absolute;
   bottom: 20px;
   left: 10px;
 }
-.todo-container{
+.todo-container {
   display: flex;
   flex-direction: column;
-  width: 28.5em ;
+  width: 28.5em;
   justify-content: center;
   align-items: center;
 
   margin-left: auto;
   margin-right: auto;
 
-  box-shadow: 0.1px .1px 50px 0.1px #504f4f;
+  box-shadow: 0.1px 0.1px 50px 0.1px #504f4f;
 }
-.todo-element{
+.todo-element {
   display: flex;
   justify-content: left;
   align-items: center;
-  
+
   height: 2.8em;
   width: 28.5em;
 
   border-top: 0.1px solid rgba(187, 187, 196, 0.5);
-
 }
-.todo-radio{
+.todo-radio {
   margin-left: 30px;
-} 
-.todo-label{
+}
+.todo-label {
   margin-left: 30px;
   text-align: left;
 }
-.status{
+.status {
   text-decoration: line-through;
 }
-.elements-container{
+.elements-container {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 
   align-items: center;
 }
-.todo-settings{
+.todo-settings {
   display: flex;
   justify-content: space-around;
   align-items: center;
-
 
   height: 35px;
   width: 50em;
@@ -142,33 +139,33 @@
 
   font-size: 9px;
 }
-.todo-status{
+.todo-status {
   display: flex;
   justify-content: space-between;
   gap: 7px;
   align-items: center;
 }
-.todo-settings{
+.todo-settings {
   border-top: 0.1px solid rgba(187, 187, 196, 0.5);
-  border-bottom-left-radius: 5px ;
+  border-bottom-left-radius: 5px;
 
   border-bottom: 0.1px solid rgba(187, 187, 196, 0.5);
-  border-bottom-right-radius: 5px ;
+  border-bottom-right-radius: 5px;
 }
 
-.setting-drk:hover{
+.setting-drk:hover {
   cursor: pointer;
   color: #f7d7f7;
 }
-.setting-drk:active{
+.setting-drk:active {
   cursor: pointer;
   color: #3463ca;
 }
-.setting-lght:hover{
+.setting-lght:hover {
   cursor: pointer;
   color: #696b7f;
 }
-.setting-lght:active{
+.setting-lght:active {
   cursor: pointer;
   color: #6390e5;
 }
