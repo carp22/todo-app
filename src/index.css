@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
 }
-
+.empty{}
 .dark{
   background-color: #191924;
 
@@ -28,10 +28,14 @@
 .item-lgth{
   background-color: #fefffe;
   transition: all 1s ease;
+
+  color: #6f6f79; 
 }
 .item-drk{
   background-color: #191924;
   transition: all 1s ease;
+
+  color: #65667d;
 }
 
 .todo-body{
@@ -108,10 +112,14 @@
 
 }
 .todo-radio{
-  margin-left: 10px;
+  margin-left: 30px;
 } 
 .todo-label{
-  margin-left: 10px;
+  margin-left: 30px;
+  text-align: left;
+}
+.status{
+  text-decoration: line-through;
 }
 .elements-container{
   display: flex;
