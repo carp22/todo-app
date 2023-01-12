@@ -4,24 +4,32 @@
   margin: 0;
   padding: 0;
 }
-.empty {
-}
 .dark {
   background-color: #191924;
-
-  background-image: url("../public/images/bg-desktop-dark.jpg");
-  background-repeat: repeat-x;
   transition: all 1s ease;
 
   color: #65667d;
 }
-.light {
-  background-color: #fafafa;
+.drk-background{
+  background-image: url("../public/images/bg-desktop-dark.jpg");
+  background-size: cover;
+  height: 250px;
+  background-repeat: no-repeat;
 
+  transition: all 1s ease;
+}
+.lght-background{
   background-image: url("../public/images/bg-desktop-light.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  height: 250px;
+
   transition: all 1s ease;
+}
+.light {
+  background-color: #fafafa;
+  transition: all 1s ease;
+
   color: #6f6f79;
 }
 
@@ -82,14 +90,37 @@
 .newtodo-input:focus {
   outline: none;
 }
-.radio {
+.buttonNewTodo {
   position: absolute;
-  bottom: 20px;
+  bottom: 19px;
   left: 10px;
+  border-radius: 7.5px;
+  outline: none;
+  border: hidden;
+
+  background-color: #9166c5;
+
+  width: 15px;
+  height: 15px;
+}
+.buttonNewTodo:hover {
+  cursor: pointer;
+  background-color: #a865ea;
+  transition:  1s ease;
+
+  box-shadow: 0px 0px 5px 1px #784ed5;
+}
+.buttonNewTodo:active {
+  cursor: pointer;
+  background-color:#893ad1 ;
+  transition:  1s ease;
+
+  box-shadow: 0px 0px 5px 1px #784ed5;
 }
 .todo-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   width: 28.5em;
   justify-content: center;
   align-items: center;
@@ -129,6 +160,7 @@
 .todo-settings {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
 
   height: 35px;
