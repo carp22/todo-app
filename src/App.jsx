@@ -12,9 +12,9 @@ function App() {
   const [itemsLeft, setItemsLeft] = useState(0)
 
   const createNewTodo = function () {
-    const decomposeEntry = newEntry.split(" ").every(item => item === " ")
-    
-    if(decomposeEntry === " "){
+    const decomposeEntry = newEntry.split("").every(item => item == "")
+
+    if(decomposeEntry){
       return alert("A blank TODO is not allowed")
     }
 
