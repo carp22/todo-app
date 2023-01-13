@@ -12,9 +12,12 @@ function App() {
   const [itemsLeft, setItemsLeft] = useState(0)
 
   const createNewTodo = function () {
-    if (newEntry == "") {
-      return alert("A blank todo is not allowed")
+    const decomposeEntry = newEntry.split(" ").every(item => item === " ")
+    
+    if(decomposeEntry == " "){
+      return alert("A blank TODO is not allowed")
     }
+
     const newTodo = {
       id: nanoid(),
       description: newEntry,
@@ -29,7 +32,6 @@ function App() {
   useEffect(() => {
     document.body.className = darkMode;
   }, [darkMode]);
-
 
   const newTodoItem = function (event) {
     const { value } = event.target;

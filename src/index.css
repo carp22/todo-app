@@ -140,6 +140,9 @@
 
   border-top: 0.1px solid rgba(187, 187, 196, 0.5);
 }
+.todo-element:hover{
+  cursor: pointer;
+}
 .todo-radio {
   margin-left: 30px;
 }
