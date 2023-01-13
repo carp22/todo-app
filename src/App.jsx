@@ -14,7 +14,7 @@ function App() {
   const createNewTodo = function () {
     const decomposeEntry = newEntry.split(" ").every(item => item === " ")
     
-    if(decomposeEntry == " "){
+    if(decomposeEntry === " "){
       return alert("A blank TODO is not allowed")
     }
 
