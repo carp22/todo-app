@@ -37,7 +37,7 @@
   background-color: #fefffe;
   transition: all 1s ease;
 
-  color: #6f6f79;
+  color: #6f6f79; 
 }
 .item-drk {
   background-color: #191924;
@@ -128,7 +128,7 @@
   margin-left: auto;
   margin-right: auto;
 
-  box-shadow: 0.1px 0.1px 50px 0.1px #504f4f;
+  box-shadow: 0.1px 0.1px 150px 0.1px #504f4f;
 }
 .todo-element {
   display: flex;
@@ -138,17 +138,16 @@
   height: 2.8em;
   width: 28.5em;
 
-  border-top: 0.1px solid rgba(187, 187, 196, 0.5);
+  border-top: 0.2px solid rgba(187, 187, 196, 0.5);
 }
 .todo-element:hover{
   cursor: pointer;
 }
-.todo-radio {
-  margin-left: 30px;
+.todo-check {
+  margin-left: 15px;
 }
 .todo-label {
-  margin-left: 30px;
-  text-align: left;
+  margin-left: 15px;
 }
 .status {
   text-decoration: line-through;
@@ -167,25 +166,25 @@
   align-items: center;
 
   height: 35px;
-  width: 50em;
+  width: 50.6em;
 
   gap: 70px;
   color: #6f6f79;
 
   font-size: 9px;
+  
+  /* border-radius: 20px; */
+
+  /* border-top: 0.1px solid rgba(187, 187, 196, 0.5);
+  border-bottom: 0.1px solid rgba(187, 187, 196, 0.5);
+  border-bottom-left-radius: 10px; */
+
 }
 .todo-status {
   display: flex;
   justify-content: space-between;
   gap: 7px;
   align-items: center;
-}
-.todo-settings {
-  border-top: 0.1px solid rgba(187, 187, 196, 0.5);
-  border-bottom-left-radius: 5px;
-
-  border-bottom: 0.1px solid rgba(187, 187, 196, 0.5);
-  border-bottom-right-radius: 5px;
 }
 
 .setting-drk:hover {

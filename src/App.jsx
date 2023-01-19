@@ -5,12 +5,19 @@ import { nanoid } from "nanoid";
 function App() {
   
   const [darkMode, setDarkMode] = useState("light");
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState( JSON.parse(localStorage.getItem("todoList")) || []);
   const [newEntry, setNewEntry] = useState("");
   const [whatToDisplay, setWhatToDisplay] = useState("all");
 
-  const [itemsLeft, setItemsLeft] = useState(0)
+  const [itemsLeft, setItemsLeft] = useState( JSON.parse(localStorage.getItem("itemsLeft"))|| 0 )
 
+  useEffect(() => {
+    document.body.className = darkMode;
+    localStorage.setItem("todoList", JSON.stringify(todoList))
+    localStorage.setItem("itemsLeft", JSON.stringify(itemsLeft))
+    
+  }, [darkMode, todoList ]);
+  
   const createNewTodo = function () {
     const decomposeEntry = newEntry.split("").every(item => item == "")
 
@@ -28,11 +35,6 @@ function App() {
     setItemsLeft(oldState => oldState + 1)
   };
 
-
-  useEffect(() => {
-    document.body.className = darkMode;
-  }, [darkMode]);
-
   const newTodoItem = function (event) {
     const { value } = event.target;
     setNewEntry(value);
@@ -47,7 +49,6 @@ function App() {
   };
 
   const todoStatus = function (id) {
-
     todoList.map(item=> {
       if (id === item.id) {
         if (event.target.checked) {
@@ -67,7 +68,7 @@ function App() {
     }))
   }
 
-  const deleteTodo = function () {
+  const deleteCompletedTodos = function () {
     for (let i = 0; i < todoList.length; i++) {
       const item = todoList[i];
       if (item["isSelected"]) {
@@ -75,6 +76,18 @@ function App() {
       }
     }
   };
+
+  const deleteTodo = (id) => {
+    for (let i = 0; i < todoList.length; i++) {
+      const item = todoList[i];
+      if (item["id"] === id) {
+        setTodoList(list => list.filter(item => item.id != id));
+        setItemsLeft(oldState => oldState - 1)
+      
+    }
+
+  }
+}
 
   const allTodos = function () {
     setWhatToDisplay("all");
@@ -95,8 +108,9 @@ function App() {
     return (
       <div className={`todo-element ${darkMode === "light" ? "item-lgth" : "item-drk"}`} key={item.id} >
         <>
-          <input type="checkbox" className="todo-radio" id={`todo-${item.id}`} onClick={() =>  todoStatus(item.id) }/>
+          <input type="checkbox" className="todo-check" onClick={() =>  todoStatus(item.id) }/>
           <h3 className={`todo-label ${item.isSelected && "status"}`}>{item.description}</h3>
+          <button onClick={() => deleteTodo(item.id)}>X</button>
         </>
       </div>
     );
@@ -118,14 +132,14 @@ function App() {
         {todoItems}
         <div className={`todo-settings ${darkMode === "light" ? "item-lgth" : "item-drk"}`}>
 
-          <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={() => console.log(todoList)}> {itemsLeft} Items left</h4>
+          <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`}> {itemsLeft} Items left</h4>
 
           <div className="todo-status">
             <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={allTodos}>All</h4>
             <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={activeTodo}>Active</h4>
             <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={completedTodo}>Completed</h4>
           </div>
-          <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={deleteTodo}>Clear completed</h4>
+          <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={deleteCompletedTodos}>Clear completed</h4>
         </div>
       </div>
 
