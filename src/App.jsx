@@ -1,4 +1,6 @@
 import TodoElements from "./components/TodoElements";
+import crossIcon from "../public/images/icon-cross.svg"
+import checkIcon from "../public/images/icon-check.svg"
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
@@ -82,13 +84,13 @@ function App() {
       const item = todoList[i];
       if (item["id"] === id) {
         setTodoList(list => list.filter(item => item.id != id));
-        setItemsLeft(oldState => oldState - 1)
-      
+        if(!item.isSelected){
+          setItemsLeft(oldState => oldState - 1)  
+        }
     }
 
   }
 }
-
   const allTodos = function () {
     setWhatToDisplay("all");
   };
@@ -106,12 +108,15 @@ function App() {
   }).map(item => {
 
     return (
-      <div className={`todo-element ${darkMode === "light" ? "item-lgth" : "item-drk"}`} key={item.id} >
-        <>
-          <input type="checkbox" className="todo-check" onClick={() =>  todoStatus(item.id) }/>
-          <h3 className={`todo-label ${item.isSelected && "status"}`}>{item.description}</h3>
-          <button onClick={() => deleteTodo(item.id)}>X</button>
-        </>
+      <div className={`todo-element`} key={item.id} >  
+          <label className={`todo-label ${darkMode === "light" ? "item-lgth" : "item-drk"} ${item.isSelected && "status"}`}>
+            <input type="checkbox" className="todo-check" defaultChecked={item.isSelected ? true : false} onClick={() =>  todoStatus(item.id) }/>
+              <span className="checkbox-custom"></span>
+                {/* <img src={checkIcon} alt="checked" className="checkicon"/> */}
+    
+            {item.description}
+          </label>
+          <img src={crossIcon} alt="delete-button"  className="crossicon" onClick={() => deleteTodo(item.id)} />  
       </div>
     );
   });
@@ -125,21 +130,20 @@ function App() {
         createNewTodo={createNewTodo}
         newTodoItem={newTodoItem}
         newEntry={newEntry}
-
       />
 
       <div className="todo-container">
         {todoItems}
-        <div className={`todo-settings ${darkMode === "light" ? "item-lgth" : "item-drk"}`}>
+        <div className={`todo-settings`}>
 
-          <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`}> {itemsLeft} Items left</h4>
+          <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`}> {itemsLeft} Items left</h3>
 
           <div className="todo-status">
-            <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={allTodos}>All</h4>
-            <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={activeTodo}>Active</h4>
-            <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={completedTodo}>Completed</h4>
+            <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={allTodos}>All</h3>
+            <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={activeTodo}>Active</h3>
+            <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={completedTodo}>Completed</h3>
           </div>
-          <h4 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={deleteCompletedTodos}>Clear completed</h4>
+          <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={deleteCompletedTodos}>Clear completed</h3>
         </div>
       </div>
 
