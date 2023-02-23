@@ -11,7 +11,7 @@
 }
 .drk-background{
   background-image: url("../public/images/bg-desktop-dark.jpg");
-  background-size: cover;
+  background-size: contain;
   height: 250px;
   background-repeat: no-repeat;
 
@@ -20,52 +20,67 @@
 .lght-background{
   background-image: url("../public/images/bg-desktop-light.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover ;
   height: 250px;
 
   transition: all 1s ease;
 }
 .light {
-  background-color: #fafafa;
+  background-color: hsl(0, 0%, 98%);
   transition: all 1s ease;
 
   color: #6f6f79;
 }
 
 .item-lgth {
+  background-color: hsl(0, 0%, 98%);
   transition: all 1s ease;
   color: hsl(235, 19%, 35%);
 }
 .item-drk {
-  background-color: #191924;
+  background-color:hsl(235, 21%, 11%);
   transition: all 1s ease;
   color: hsl(234, 39%, 85%);
 }
 
 .todo-body {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr 1fr;
+
+  /* justify-content: space-around;
   align-items: center;
 
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 50px; */
 }
 .todo-title {
   letter-spacing: 0.5rem;
   color: #ffffff;
   transition: all 1s ease;
+
+  grid-row: 1;
+  grid-column: 1;
+}
+.mode-icon {
+  grid-row: 1;
+  grid-column: 2;
+  cursor: pointer;
+  margin-left: auto;
 }
 .mode-icon:hover {
   cursor: pointer;
 }
 .newtodo-container {
+  grid-row: 2;
+  grid-column: 1/3;
   position: relative;
   width: 28.5em;
 
   margin-bottom: 10px;
-
-  margin-left: auto;
-  margin-right: auto;
 }
 .newtodo-input {
   font-weight: 400;
@@ -87,8 +102,8 @@
   outline: none;
 }
 .buttonNewTodo {
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   background-color: #fafafa;
   border-radius: 50%;
   vertical-align: middle;
@@ -99,24 +114,19 @@
   position: absolute;
   bottom: 19px;
   left: 10px;
-  border-radius: 7.5px;
+}
+.buttonNewTodo:checked{
+  background-position: center;
+  background-image: url("../public/images/icon-check.svg"), linear-gradient(to bottom, #9b5fe5, #70c4fa);
+  background-repeat: no-repeat;
+  background-size: cover 20%;
 }
 .buttonNewTodo:hover {
   cursor: pointer;
   transition:  1s ease;
   box-shadow: 0px 0px 5px 1px #784ed5;
 }
-.buttonNewTodo:checked{
-  transition: 1s ease;
-  background-image: linear-gradient(to bottom, #9b5fe5, #70c4fa);
-}
-/* .buttonNewTodo:active {
-  cursor: pointer;
-  background-color:#893ad1 ;
-  transition:  1s ease;
 
-  box-shadow: 0px 0px 5px 1px #784ed5;
-} */
 .todo-container {
   display: flex;
   flex-direction: column;
@@ -140,7 +150,7 @@
   height: 2.8em;
   width: 28.5em;
 
-  border-top: 0.1px solid rgba(187, 187, 196, 0.5);
+  border-top: 0.1px solid rgba(187, 187, 196, 0.1);
 }
 
 .crossicon{
@@ -158,28 +168,33 @@
   cursor: pointer;
 
   font-weight: 400;
-  margin-left: 15px;
+  margin-left: 10px;
   font-size: 18px;
-  /* color: hsl(235, 19%, 35%); */
+  color: hsl(235, 19%, 35%);
 }
 .todo-check{
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  margin-right: 25px;
+  margin-right: 45px;
+  width: 18px;
+  height: 18px;
 }
 .checkbox-custom{
   
   display: inline-block;
   width: 18px;
   height: 18px;
+  margin-right: 20px;
 
   border-radius: 50%;
   border: 1px solid #ccc;
   background-position: center;
   background-repeat: no-repeat;
+  
 
 }
+
 .todo-check:checked + .checkbox-custom{
   transition: all 1s ease;
   background-image:  url("../public/images/icon-check.svg"), linear-gradient(to bottom, #9b5fe5, #70c4fa);
@@ -187,7 +202,6 @@
 }
 .todo-check:hover{
   cursor: pointer;
-
 }
 
 .status {
@@ -213,13 +227,6 @@
   gap: 70px;
 
   font-size: 9px;
-  
-  /* border-radius: 20px; */
-
-  /* border-top: 0.1px solid rgba(187, 187, 196, 0.5);
-  border-bottom: 0.1px solid rgba(187, 187, 196, 0.5);
-  border-bottom-left-radius: 10px; */
-
 }
 .todo-status {
   display: flex;
@@ -246,7 +253,4 @@
   cursor: pointer;
   color: #2e3150;
 }
-.setting-lght:active {
-  cursor: pointer;
-  color: #6390e5;
-}
+

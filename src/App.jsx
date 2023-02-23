@@ -108,12 +108,10 @@ function App() {
   }).map(item => {
 
     return (
-      <div className={`todo-element`} key={item.id} >  
+      <div className="todo-element" key={item.id} >  
           <label className={`todo-label ${darkMode === "light" ? "item-lgth" : "item-drk"} ${item.isSelected && "status"}`}>
             <input type="checkbox" className="todo-check" defaultChecked={item.isSelected ? true : false} onClick={() =>  todoStatus(item.id) }/>
               <span className="checkbox-custom"></span>
-                {/* <img src={checkIcon} alt="checked" className="checkicon"/> */}
-    
             {item.description}
           </label>
           <img src={crossIcon} alt="delete-button"  className="crossicon" onClick={() => deleteTodo(item.id)} />  

@@ -10,11 +10,12 @@ function TodoElements({darkMode, toggleMode, createNewTodo, newEntry, newTodoIte
         <img src={darkMode === "light" ? moon : sun} alt="mode" 
             className='mode-icon'
             onClick={toggleMode}/>
-        </div>
         <div className="newtodo-container">
           <input type="checkbox" className='buttonNewTodo' onClick={createNewTodo} />
+            {/* <span className="checkbox-custom"></span> */}
           <input type="text" className={`newtodo-input ${darkMode === "light" ? "item-lgth" : "item-drk"}`} placeholder='  Create a new todo...' value={newEntry} onChange={newTodoItem}/>
         </div>
+      </div>
     </>
   )
 }
