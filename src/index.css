@@ -37,7 +37,7 @@
 }
 
 .item-lgth {
-  background-color: hsl(0, 0%, 98%);
+  /* background-color: hsl(0, 0%, 98%); */
   
   transition: all 1s ease;
   color: hsl(235, 19%, 35%);
@@ -111,7 +111,6 @@
 .buttonNewTodo {
   width: 18px;
   height: 18px;
-  background-color: #fafafa;
   border-radius: 50%;
   vertical-align: middle;
   border: 1px solid #ddd;
@@ -140,6 +139,11 @@
   margin: auto auto;
 
   margin-top: -30px;
+  
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 
   box-shadow:2px 2px 100px 10px hsl(235, 22%, 10%)
 }
@@ -237,8 +241,8 @@
   
   font-size: 9px;
 
-  border-bottom-left-radius: 80px;
-  border-bottom-right-radius: 80px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .todo-status {
   display: flex;

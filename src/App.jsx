@@ -175,7 +175,7 @@ function App() {
             }
           </Droppable>
 
-          <div className="todo-settings">
+          <div className=  {`todo-settings ${darkMode === "light" ? "light" : "dark"}`} >
 
             <h3 style={styles}>{itemsLeft} Items left</h3>
 
