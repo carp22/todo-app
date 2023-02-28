@@ -1,8 +1,11 @@
 import TodoElements from "./components/TodoElements";
+import Footer from "./components/Footer";
 import crossIcon from "../public/images/icon-cross.svg"
-import checkIcon from "../public/images/icon-check.svg"
+
 import { useState, useEffect } from "react";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { nanoid } from "nanoid";
+
 
 function App() {
   
@@ -10,7 +13,6 @@ function App() {
   const [todoList, setTodoList] = useState( JSON.parse(localStorage.getItem("todoList")) || []);
   const [newEntry, setNewEntry] = useState("");
   const [whatToDisplay, setWhatToDisplay] = useState("all");
-
   const [itemsLeft, setItemsLeft] = useState( JSON.parse(localStorage.getItem("itemsLeft"))|| 0 )
 
   useEffect(() => {
@@ -20,6 +22,19 @@ function App() {
     
   }, [darkMode, todoList ]);
   
+  const styles = {
+    color: darkMode === "light" ? "hsl(236, 9%, 61%)": "hsl(233, 14%, 35%)",
+    transition: "all 1s ease"
+  }
+
+  const reorderTodos = (list, startIndex, endIndex) => {
+    
+    const reorderList = [...list];
+    const [removed] = reorderList.splice(startIndex, 1);
+    reorderList.splice(endIndex, 0, removed)
+    return reorderList
+  }
+
   const createNewTodo = function () {
     const decomposeEntry = newEntry.split("").every(item => item == "")
 
@@ -90,7 +105,7 @@ function App() {
     }
 
   }
-}
+  }
   const allTodos = function () {
     setWhatToDisplay("all");
   };
@@ -105,46 +120,79 @@ function App() {
     if (whatToDisplay === "all") return true;
     if (whatToDisplay === "completed") return item.isSelected;
     if (whatToDisplay === "active") return !item.isSelected;
-  }).map(item => {
+  }).map((item, index) => {
 
     return (
-      <div className="todo-element" key={item.id} >  
-          <label className={`todo-label ${darkMode === "light" ? "item-lgth" : "item-drk"} ${item.isSelected && "status"}`}>
-            <input type="checkbox" className="todo-check" defaultChecked={item.isSelected ? true : false} onClick={() =>  todoStatus(item.id) }/>
-              <span className="checkbox-custom"></span>
-            {item.description}
-          </label>
-          <img src={crossIcon} alt="delete-button"  className="crossicon" onClick={() => deleteTodo(item.id)} />  
-      </div>
-    );
+          <Draggable key={item.id} draggableId={item.id} index={index}>
+            {(provided) => (
+              <div {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps} className={`todo-element ${darkMode === "light" ? "light" : "dark"}`} > 
+                  <>
+                    <label className={`todo-label ${darkMode === "light" ? "item-lgth" : "item-drk"} ${item.isSelected && "status"}`}  >
+                      <input type="checkbox" className="todo-check" defaultChecked={item.isSelected ? true : false} onClick={() =>  todoStatus(item.id) }/>
+                        <span className="checkbox-custom"></span>
+                      {item.description}
+                    </label>
+                    <img src={crossIcon} alt="delete-button"  className="crossicon" onClick={() => deleteTodo(item.id)} />  
+                  </>
+              </div>
+            )}
+          </Draggable>
+    )
   });
 
   return (
-    <div>
+    <div className="app">
 
-      <TodoElements
-        darkMode={darkMode}
-        toggleMode={toggleMode}
-        createNewTodo={createNewTodo}
-        newTodoItem={newTodoItem}
-        newEntry={newEntry}
-      />
+      <DragDropContext onDragEnd={(result) => {
+        const {source, destination} = result;
+        if(!destination) {
+          return
+        }
+        if (source.index === destination.index && source.droppableId === destination.droppableId){
+          return
+        }
 
-      <div className="todo-container">
-        {todoItems}
-        <div className={`todo-settings`}>
+        setTodoList(oldState => reorderTodos(oldState, source.index, destination.index))
 
-          <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`}> {itemsLeft} Items left</h3>
+        }}>
 
-          <div className="todo-status">
-            <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={allTodos}>All</h3>
-            <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={activeTodo}>Active</h3>
-            <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={completedTodo}>Completed</h3>
+        <TodoElements
+          darkMode={darkMode}
+          toggleMode={toggleMode}
+          createNewTodo={createNewTodo}
+          newTodoItem={newTodoItem}
+          newEntry={newEntry}
+        />
+
+        <div className="todo-container" >
+
+          <Droppable key={nanoid()} droppableId="to-dos">
+            {(provided) => 
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                {todoItems}
+                {provided.placeholder}
+              </div>
+            }
+          </Droppable>
+
+          <div className="todo-settings">
+
+            <h3 style={styles}>{itemsLeft} Items left</h3>
+
+            <div className="todo-status">
+              <button className={`filter ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={allTodos}>All</button>
+              <button className={`filter ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={activeTodo}>Active</button>
+              <button className={`filter ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={completedTodo}>Completed</button>
+            </div>
+
+            <h3  className={`filter ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={deleteCompletedTodos}>Clear completed</h3>
           </div>
-          <h3 className={`${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={deleteCompletedTodos}>Clear completed</h3>
         </div>
-      </div>
 
+      </DragDropContext>
+
+      <Footer darkMode={darkMode} styles={styles}/>  
+      
     </div>
   );
 }

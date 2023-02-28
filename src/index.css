@@ -4,20 +4,23 @@
   margin: 0;
   padding: 0;
 }
+
 .dark {
   background-color:hsl(235, 21%, 11%);
+  background-image:linear-gradient(to bottom, hsl(235, 21%, 11%), hsl(235, 21%, 11%));
   transition: all 1s ease;
 
 }
 .drk-background{
   background-image: url("../public/images/bg-desktop-dark.jpg");
-  background-size: contain;
+  background-size: cover;
   height: 250px;
   background-repeat: no-repeat;
 
   transition: all 1s ease;
 }
 .lght-background{
+  
   background-image: url("../public/images/bg-desktop-light.jpg");
   background-repeat: no-repeat;
   background-size: cover ;
@@ -28,21 +31,30 @@
 .light {
   background-color: hsl(0, 0%, 98%);
   transition: all 1s ease;
+  background-image: linear-gradient(to bottom, #fafafa, #fafafa);
 
   color: #6f6f79;
 }
 
 .item-lgth {
   background-color: hsl(0, 0%, 98%);
+  
   transition: all 1s ease;
   color: hsl(235, 19%, 35%);
 }
 .item-drk {
+  
   background-color:hsl(235, 21%, 11%);
   transition: all 1s ease;
   color: hsl(234, 39%, 85%);
 }
-
+/* .item-lgth:focus{
+  background-color: hsl(0, 0%, 98%);
+  transition: all 1s ease;
+  color: hsl(235, 19%, 35%);
+  cursor: pointer;
+  color: #2e3150;
+} */
 .todo-body {
   display: grid;
   padding-top: 50px;
@@ -51,11 +63,6 @@
   grid-template-columns: auto auto;
   grid-template-rows: 1fr 1fr;
 
-  /* justify-content: space-around;
-  align-items: center;
-
-  padding-top: 50px;
-  padding-bottom: 50px; */
 }
 .todo-title {
   letter-spacing: 0.5rem;
@@ -91,7 +98,7 @@
   margin-left: auto;
   margin-right: auto;
 
-  text-indent: 30px;
+  text-indent: 40px;
 
   border: hidden;
   border-radius: 5px;
@@ -108,25 +115,21 @@
   border-radius: 50%;
   vertical-align: middle;
   border: 1px solid #ddd;
-  appearance: none;
-  -webkit-appearance: none;
   outline: none;
   position: absolute;
   bottom: 19px;
   left: 10px;
-}
-.buttonNewTodo:checked{
   background-position: center;
-  background-image: url("../public/images/icon-check.svg"), linear-gradient(to bottom, #9b5fe5, #70c4fa);
   background-repeat: no-repeat;
+  transition: background-image 0.5s ease;
+  cursor: pointer;
+}
+.buttonNewTodo:hover{
+  border: 0.9px solid transparent;
+  border-color: #70c4fa;
+  background-image : url("../public/images/icon-check.svg"), linear-gradient(to bottom, #9b5fe5, #70c4fa);
   background-size: cover 20%;
 }
-.buttonNewTodo:hover {
-  cursor: pointer;
-  transition:  1s ease;
-  box-shadow: 0px 0px 5px 1px #784ed5;
-}
-
 .todo-container {
   display: flex;
   flex-direction: column;
@@ -134,14 +137,16 @@
   width: 28.5em;
   justify-content: center;
   align-items: center;
+  margin: auto auto;
 
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: -30px;
 
-  box-shadow: 2px 2px 100px 2px hsl(240, 24%, 8%)
+  box-shadow:2px 2px 100px 10px hsl(235, 22%, 10%)
 }
 .todo-element {
   display: flex;
+  flex-wrap: wrap;
+  /* background-image: linear-gradient(to bottom, #fafafa, #fafafa); ; */
   align-items: center;
   position: relative;
   cursor: pointer;
@@ -151,6 +156,13 @@
   width: 28.5em;
 
   border-top: 0.1px solid rgba(187, 187, 196, 0.1);
+}
+.todo-element:first-child {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.todo-element:hover{
+  cursor: grab;
 }
 
 .crossicon{
@@ -165,7 +177,7 @@
 .todo-label {
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
+  cursor: grab;
 
   font-weight: 400;
   margin-left: 10px;
@@ -191,7 +203,6 @@
   border: 1px solid #ccc;
   background-position: center;
   background-repeat: no-repeat;
-  
 
 }
 
@@ -223,10 +234,11 @@
 
   height: 35px;
   width: 50.6em;
-
-  gap: 70px;
-
+  
   font-size: 9px;
+
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
 }
 .todo-status {
   display: flex;
@@ -234,23 +246,44 @@
   gap: 7px;
   align-items: center;
 }
+.todo-status > button:hover {
+  cursor: pointer;
+}
+.todo-settings > button:hover {
+  cursor: pointer;
+}
+
 .setting-lght{
+  transition: all 1s ease;
+  background-color:hsl(0, 0%, 98%);;
   color: hsl(235, 10%, 79%);
 }
 .setting-drk{
+  transition: all 1s ease;
+  background-color:hsl(235, 21%, 11%);
   color: hsl(233, 14%, 35%);
 }
 
 .setting-drk:hover {
-  cursor: pointer;
   color: hsl(236, 33%, 92%);
 }
-.setting-drk:active {
+.setting-lght:hover {
+  color: #2e3150;
+}
+.filter{
+  border: none;
+  font-weight: bold;
+  font-size: 12px;
+}
+.filter:hover{
   cursor: pointer;
+}
+.filter:focus{
   color: #3463ca;
 }
-.setting-lght:hover {
-  cursor: pointer;
-  color: #2e3150;
+.footer{
+  font-size: 8px;
+  margin-top: 35px;
+  text-align: center;
 }
 
