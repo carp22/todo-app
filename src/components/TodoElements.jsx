@@ -12,7 +12,7 @@ function TodoElements({darkMode, toggleMode, createNewTodo, newEntry, newTodoIte
             onClick={toggleMode}/>
         <div className="newtodo-container">
           <input type="button" className='buttonNewTodo' onClick={createNewTodo} />
-          <input type="text" className={`newtodo-input ${darkMode === "light" ? "item-lgth" : "item-drk"}`} placeholder='  Create a new to-do...' value={newEntry} onChange={newTodoItem}/>
+          <input type="text" className={`newtodo-input ${darkMode === "light" ? "item-lgth" : "item-drk"}`} placeholder='Create a new to-do...' value={newEntry} onChange={newTodoItem}/>
         </div>
       </div>
     </>

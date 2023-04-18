@@ -132,7 +132,9 @@ function App() {
                         <span className="checkbox-custom"></span>
                       {item.description}
                     </label>
-                    <img src={crossIcon} alt="delete-button"  className="crossicon" onClick={() => deleteTodo(item.id)} />  
+                    <section className="cross-container">
+                      <img src={crossIcon} alt="delete-button"  className="crossicon" onClick={() => deleteTodo(item.id)} />  
+                     </section>
                   </>
               </div>
             )}
@@ -165,7 +167,6 @@ function App() {
         />
 
         <div className="todo-container" >
-
           <Droppable key={nanoid()} droppableId="to-dos">
             {(provided) => 
               <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -175,18 +176,20 @@ function App() {
             }
           </Droppable>
 
-          <div className=  {`todo-settings ${darkMode === "light" ? "light" : "dark"}`} >
+          <div className={`todo-settings ${darkMode === "light" ? "light" : "dark"}`} >
 
-            <h3 style={styles}>{itemsLeft} Items left</h3>
+            <h3 style={styles} className="filter">{itemsLeft} Items left</h3>
 
             <div className="todo-status">
               <button className={`filter ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={allTodos}>All</button>
               <button className={`filter ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={activeTodo}>Active</button>
               <button className={`filter ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={completedTodo}>Completed</button>
+            
             </div>
 
-            <h3  className={`filter ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={deleteCompletedTodos}>Clear completed</h3>
+            <h3  className={`filter completed ${darkMode === "light" ? "setting-lght" : "setting-drk"}`} onClick={deleteCompletedTodos}>Clear completed</h3>
           </div>
+
         </div>
 
       </DragDropContext>
